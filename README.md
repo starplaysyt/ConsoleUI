@@ -14,10 +14,7 @@ It includes rendering tools, window management, an input/navigation system, and 
 - Navigation between elements using arrow keys and selection with Enter.
 - Full control over rendering, positioning and sizing of elements.
 - Custom window lifecycle managed through `ConsoleWindow`.
-- Initial set of UI controls:
-  - `Label`
-  - `TextBox`
-  - and many more planned (panels, buttons, grids, containers).
+- Basic
 
 ## Architecture
 
