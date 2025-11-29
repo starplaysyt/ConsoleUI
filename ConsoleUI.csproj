@@ -1,0 +1,21 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net9.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <Compile Remove="ConsoleUI.Debug\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <EmbeddedResource Remove="ConsoleUI.Debug\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Remove="ConsoleUI.Debug\**" />
+    </ItemGroup>
+
+</Project>
