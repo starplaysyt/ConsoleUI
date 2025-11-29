@@ -9,29 +9,37 @@ public class TextBox : UIElement
     
     public override void Draw()
     {
+        var renderer = Owner?.Renderer;
+        
+        if (renderer is null) return;
+        
         if (IsSelected)
         {
             if (Foreground is ConsoleColor.Black)
-                Owner.Renderer.ResetColor();
+                renderer.ResetColor();
             else 
-                Owner.Renderer.SetBgColor(Foreground);
-            Owner?.Renderer.SetFgColor(Background);
+                renderer.SetBgColor(Foreground);
+            renderer.SetFgColor(Background);
+            
+            renderer.WriteStringAt(LocationX, LocationY, "> ");
+            renderer.WriteStringNext(Text);
         }
         else
         {
             if (Background is ConsoleColor.Black)
-                Owner.Renderer.ResetColor();
+                renderer.ResetColor();
             else
-                Owner.Renderer.SetBgColor(Background);
-            Owner?.Renderer.SetFgColor(Foreground);
+                renderer.SetBgColor(Background);
+            renderer.SetFgColor(Foreground);
+            
+            renderer.WriteStringAt(LocationX, LocationY, "> ");
+            renderer.WriteFixedStringNext(Text, SizeX, ' ');
+            
+            if (Text.Length > SizeX)
+                renderer.WriteFixedStringAt(LocationX + 2 + SizeX - 3, LocationY, "...", 3, ' ');
         }
         
-        Owner?.Renderer.WriteStringAt(LocationX, LocationY, "> ");
-        Owner?.Renderer.WriteFixedStringNext(Text, SizeX, ' ');
-        if (Text.Length > SizeX)
-        {
-            Owner?.Renderer.WriteFixedStringAt(LocationX + 2 + SizeX - 3, LocationY, "...", 3, ' ');
-        }
+       
     }
 
     public override void Update(ConsoleKeyInfo keyInfo)

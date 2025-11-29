@@ -48,6 +48,9 @@ public class Window1 : ConsoleWindow
         label2.TopElement = textBox1;
         textBox1.BottomElement = label2;
 
+        label1.OnClick += (sender, args) => textBox1.Text = (sender as Button).Name + "asjdaks";
+        label2.OnClick += (sender, args) => textBox1.Text = (sender as Button).Name;
+
 
 
     }

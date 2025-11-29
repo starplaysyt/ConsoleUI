@@ -6,6 +6,8 @@ namespace ConsoleUI.UI;
 public class Button : UIElement
 {
     public string Text { get; set; } = "";
+
+    public event EventHandler OnClick = delegate { };
     
     public override void Draw()
     {
@@ -31,7 +33,8 @@ public class Button : UIElement
 
     public override void Update(ConsoleKeyInfo keyInfo)
     {
-        Debug.Print($"Update called on {Name}");
+        if (keyInfo.Key is ConsoleKey.Enter)
+            OnClick(this, EventArgs.Empty);
     }
     
     public Button() : base()
