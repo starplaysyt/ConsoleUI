@@ -3,7 +3,7 @@ using ConsoleUI.Interfaces;
 
 namespace ConsoleUI.UI;
 
-public class TextBox : UIElement
+public class Button : UIElement
 {
     public string Text { get; set; } = "";
     
@@ -26,31 +26,20 @@ public class TextBox : UIElement
             Owner?.Renderer.SetFgColor(Foreground);
         }
         
-        Owner?.Renderer.WriteStringAt(LocationX, LocationY, "> ");
-        Owner?.Renderer.WriteFixedStringNext(Text, SizeX, ' ');
-        if (Text.Length > SizeX)
-        {
-            Owner?.Renderer.WriteFixedStringAt(LocationX + 2 + SizeX - 3, LocationY, "...", 3, ' ');
-        }
+        Owner?.Renderer.WriteFixedStringAt(LocationX, LocationY, Text, SizeX, ' ');
     }
 
     public override void Update(ConsoleKeyInfo keyInfo)
     {
         Debug.Print($"Update called on {Name}");
-
-        if (keyInfo.Key is ConsoleKey.Backspace && Text.Length > 0)
-            Text = Text[..^1];
-        
-        if (char.IsLetter(keyInfo.KeyChar))
-            Text += keyInfo.KeyChar;
     }
     
-    public TextBox() : base()
+    public Button() : base()
     {
         IsSelectable = true;
     }
     
-    public TextBox(string name) : base(name)
+    public Button(string name) : base(name)
     {
         
     }

@@ -5,18 +5,19 @@ namespace ConsoleUI.Debug;
 
 public class Window1 : ConsoleWindow
 {
-    Label label1 = new Label();
-    Label label2 = new Label();
+    Button label1 = new Button(); //Тут создание самих элементов управления
+    Button label2 = new Button();
     TextBox textBox1 = new TextBox();
-    public Window1()
+    public Window1() //конструктор окна
     {
         InitializeComponent();
-        RegisterElement(label1);
+        
+        RegisterElement(label1); //регистрация элементов управления на окно
         RegisterElement(label2);
         RegisterElement(textBox1);
         
         
-        SelectedElement = textBox1;
+        SelectedElement = textBox1; //указание первого выбранного элемента(так нужно)
     }
 
     public void InitializeComponent()
@@ -42,7 +43,7 @@ public class Window1 : ConsoleWindow
         textBox1.SizeY = 10;
         textBox1.Text = "test";
 
-        label1.LeftElement = label2;
+        label1.LeftElement = label2; //указание навигации, к какому элементу управления переходить на стрелочки относительно выбранного
         label2.RightElement = label1;
         label2.TopElement = textBox1;
         textBox1.BottomElement = label2;

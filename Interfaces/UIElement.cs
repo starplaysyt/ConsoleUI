@@ -11,7 +11,7 @@ public abstract class UIElement
     private UIElement? _leftElement;
     private UIElement? _bottomElement;
 
-    public bool IsSelectable { get; private set; }
+    public bool IsSelectable { get; protected internal set; }
 
     public bool IsSelected
     {

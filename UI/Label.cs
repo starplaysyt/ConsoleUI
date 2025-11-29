@@ -19,7 +19,7 @@ public class Label : UIElement
     
     public Label() : base()
     {
-        
+        IsSelectable = false;
     }
     
     public Label(string name) : base(name)
