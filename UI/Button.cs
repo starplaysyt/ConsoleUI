@@ -31,10 +31,12 @@ public class Button : UIElement
         Owner?.Renderer.WriteFixedStringAt(LocationX, LocationY, Text, SizeX, ' ');
     }
 
-    public override void Update(ConsoleKeyInfo keyInfo)
+    public override bool Update(ConsoleKeyInfo keyInfo)
     {
         if (keyInfo.Key is ConsoleKey.Enter)
             OnClick(this, EventArgs.Empty);
+        
+        return false;
     }
     
     public Button() : base()

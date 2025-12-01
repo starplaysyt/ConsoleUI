@@ -44,10 +44,12 @@ public class ConsoleWindow : IWindow
             if (Console.KeyAvailable)
             {
                 var key = Console.ReadKey(true);
+                
+                var result = SelectedElement?.Update(key);
 
                 //TODO: Refactor that to one setting switch(like setting a linked variable to SelectedElement.<Direction>Element. Should work pretty fine
                 switch (key.Key)
-                {
+                { 
                     case ConsoleKey.LeftArrow:
                         if (SelectedElement?.LeftElement != null)
                         {
@@ -86,7 +88,6 @@ public class ConsoleWindow : IWindow
                         }
                         break;
                     default:
-                        SelectedElement?.Update(key);
                         break;
                 }
             }

@@ -12,9 +12,10 @@ public class Label : UIElement
         Owner?.Renderer.WriteFixedStringAt(LocationX, LocationY, Text, SizeX, ' ');
     }
 
-    public override void Update(ConsoleKeyInfo keyInfo)
+    public override bool Update(ConsoleKeyInfo keyInfo)
     {
         Debug.Print($"Update called on {Name}");
+        return false;
     }
     
     public Label() : base()

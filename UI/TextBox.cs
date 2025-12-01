@@ -42,7 +42,7 @@ public class TextBox : UIElement
        
     }
 
-    public override void Update(ConsoleKeyInfo keyInfo)
+    public override bool Update(ConsoleKeyInfo keyInfo)
     {
         Debug.Print($"Update called on {Name}");
 
@@ -60,6 +60,7 @@ public class TextBox : UIElement
             Owner?.Renderer.AskForFullCleanup();
         }
 
+        return false;
     }
     
     public TextBox() : base()

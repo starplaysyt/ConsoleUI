@@ -90,5 +90,5 @@ public abstract class UIElement
     
     public abstract void Draw();
 
-    public abstract void Update(ConsoleKeyInfo keyInfo);
+    public abstract bool Update(ConsoleKeyInfo keyInfo);
 }
