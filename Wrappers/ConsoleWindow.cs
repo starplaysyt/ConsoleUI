@@ -2,17 +2,17 @@ using System.Diagnostics;
 using System.Drawing;
 using ConsoleUI.Interfaces;
 
-namespace ConsoleUI.Console;
+namespace ConsoleUI.Wrappers;
 
 public class ConsoleWindow : IWindow
 {
     public bool IsRunning { get; set; } = true;
     
-    public Size Size => new(System.Console.WindowWidth, System.Console.WindowHeight);
+    public Size Size => new(Console.WindowWidth, Console.WindowHeight);
 
-    public ConsoleRenderer Renderer = new ConsoleRenderer();
+    public ConsoleRenderer Renderer = new();
     
-    private List<UIElement> _elements = new List<UIElement>();
+    private List<UIElement> _elements = new();
 
     public UIElement? SelectedElement { get; set; } = null;
 
@@ -31,16 +31,19 @@ public class ConsoleWindow : IWindow
     {
         while (IsRunning)
         {
+            Renderer.ClearWindow();
+            
             foreach (var element in _elements)
             {
                 element.Draw();
                 Renderer.ResetColor();
             }
+            
             Renderer.WriteCharAt(0, 0,'\0');
 
-            if (System.Console.KeyAvailable)
+            if (Console.KeyAvailable)
             {
-                var key = System.Console.ReadKey(true);
+                var key = Console.ReadKey(true);
 
                 //TODO: Refactor that to one setting switch(like setting a linked variable to SelectedElement.<Direction>Element. Should work pretty fine
                 switch (key.Key)
