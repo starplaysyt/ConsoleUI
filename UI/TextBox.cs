@@ -63,7 +63,7 @@ public class TextBox : UIElement
         return false;
     }
     
-    public TextBox() : base()
+    public TextBox()
     {
         IsSelectable = true;
     }

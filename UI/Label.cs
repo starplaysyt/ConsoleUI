@@ -18,7 +18,7 @@ public class Label : UIElement
         return false;
     }
     
-    public Label() : base()
+    public Label()
     {
         IsSelectable = false;
     }

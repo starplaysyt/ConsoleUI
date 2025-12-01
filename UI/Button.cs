@@ -11,21 +11,24 @@ public class Button : UIElement
     
     public override void Draw()
     {
+        var renderer = Owner?.Renderer;
+        if (renderer is null) return;
+        
         if (IsSelected)
         {
             if (Foreground is ConsoleColor.Black)
-                Owner.Renderer.ResetColor();
+                renderer.ResetColor();
             else 
-                Owner.Renderer.SetBgColor(Foreground);
-            Owner?.Renderer.SetFgColor(Background);
+                renderer.SetBgColor(Foreground);
+            renderer.SetFgColor(Background);
         }
         else
         {
             if (Background is ConsoleColor.Black)
-                Owner.Renderer.ResetColor();
+                renderer.ResetColor();
             else
-                Owner.Renderer.SetBgColor(Background);
-            Owner?.Renderer.SetFgColor(Foreground);
+                renderer.SetBgColor(Background);
+            renderer.SetFgColor(Foreground);
         }
         
         Owner?.Renderer.WriteFixedStringAt(LocationX, LocationY, Text, SizeX, ' ');

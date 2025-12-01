@@ -45,8 +45,12 @@ public class ConsoleWindow : IWindow
             {
                 var key = Console.ReadKey(true);
                 
-                var result = SelectedElement?.Update(key);
+                if (SelectedElement is null) continue;
+                
+                var result = SelectedElement.Update(key);
 
+                if (result) continue;
+                
                 //TODO: Refactor that to one setting switch(like setting a linked variable to SelectedElement.<Direction>Element. Should work pretty fine
                 switch (key.Key)
                 { 
@@ -91,8 +95,6 @@ public class ConsoleWindow : IWindow
                         break;
                 }
             }
-            
-            
             Thread.Sleep(30);
         }
     }
