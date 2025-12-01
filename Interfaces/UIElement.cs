@@ -1,5 +1,5 @@
-using ConsoleUI.Console;
 using ConsoleUI.Services;
+using ConsoleUI.Wrappers;
 
 namespace ConsoleUI.Interfaces;
 
@@ -20,6 +20,7 @@ public abstract class UIElement
         {
             _isSelected = value;
             OnSelectedChanged(this, EventArgs.Empty);
+            Owner?.Renderer.AskForFullCleanup();
         }
     }
 

@@ -47,10 +47,19 @@ public class TextBox : UIElement
         Debug.Print($"Update called on {Name}");
 
         if (keyInfo.Key is ConsoleKey.Backspace && Text.Length > 0)
+        {
             Text = Text[..^1];
-        
-        if (char.IsLetter(keyInfo.KeyChar))
+            Owner?.Renderer.AskForFullCleanup();
+        }
+
+
+        if (char.IsLetter(keyInfo.KeyChar) || char.IsDigit(keyInfo.KeyChar))
+        {
             Text += keyInfo.KeyChar;
+            
+            Owner?.Renderer.AskForFullCleanup();
+        }
+
     }
     
     public TextBox() : base()

@@ -1,5 +1,5 @@
-using ConsoleUI.Console;
 using ConsoleUI.UI;
+using ConsoleUI.Wrappers;
 
 namespace ConsoleUI.Debug;
 
