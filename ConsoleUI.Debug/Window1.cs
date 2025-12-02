@@ -17,7 +17,8 @@ public class Window1 : ConsoleWindow
         RegisterElement(textBox1);
         
         
-        SelectedElement = textBox1; //указание первого выбранного элемента(так нужно)
+        //SelectedElement = textBox1; //указание первого выбранного элемента(так нужно)
+        //уже не нужно
     }
 
     public void InitializeComponent()

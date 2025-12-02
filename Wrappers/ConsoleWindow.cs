@@ -6,6 +6,7 @@ namespace ConsoleUI.Wrappers;
 
 public class ConsoleWindow : IWindow
 {
+    private UIElement? _selectedElement = null;
     public bool IsRunning { get; set; } = true;
     
     public Size Size => new(Console.WindowWidth, Console.WindowHeight);
@@ -14,7 +15,16 @@ public class ConsoleWindow : IWindow
     
     private List<UIElement> _elements = new();
 
-    public UIElement? SelectedElement { get; set; } = null;
+    public UIElement? SelectedElement
+    {
+        get => _selectedElement;
+        set
+        {
+            if (_selectedElement is not null) _selectedElement.IsSelected = false;
+            _selectedElement = value;
+            if (_selectedElement is not null) _selectedElement.IsSelected = true;
+        }
+    }
 
     public ConsoleWindow()
     {
@@ -24,6 +34,7 @@ public class ConsoleWindow : IWindow
     public void RegisterElement(UIElement element)
     {
         _elements.Add(element);
+        if (_selectedElement is null) SelectedElement = element;
         element.Owner = this;
     }
 
