@@ -2,7 +2,7 @@
 
 ![Status](https://img.shields.io/badge/status-WIP-yellow)
 ![Platform](https://img.shields.io/badge/platform-Windows%20%7C%20macOS-blue)
-![DotNet](https://img.shields.io/badge/.NET-9.0-purple)
+![DotNet](https://img.shields.io/badge/.NET-10.0-purple)
 ![License](https://img.shields.io/badge/license-MIT%20with%20Attribution-green)
 
 **ConsoleUI** is a library that provides a complete environment for building user interfaces directly in the console.  
